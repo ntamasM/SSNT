@@ -1,11 +1,12 @@
 <?php
 
 // Display additional settings page content
-function ssnt_additional_settings_page() {
+function ssnt_additional_settings_page()
+{
     if (!current_user_can('administrator')) {
         wp_die('You do not have sufficient permissions to access this page.');
     }
-    ?>
+?>
     <div class="wrap">
         <h1>SSNT Additional Settings</h1>
         <form id="ssnt-settings-form" action="options.php" method="post">
@@ -67,7 +68,7 @@ function ssnt_additional_settings_page() {
                             </select>
                         </label>
                         <label>Required: <input type="checkbox" name="ssnt_dynamic_fields[${fieldIndex}][required]" ${required ? 'checked' : ''} /></label>
-                        <label>Input Field Size: <input type="number" size="10" min="40" max="1000" name="ssnt_dynamic_fields[${fieldIndex}][size]" value="${size}" class="field-size" /></label>
+                        <label>Input Field Size: <input type="number" size="10" min="30" max="100" name="ssnt_dynamic_fields[${fieldIndex}][size]" value="${size}" class="field-size" /></label>
                     </div>
                     <div class="right">
                         <button type="button" class="delete-field-button">❌️</button>
@@ -128,11 +129,12 @@ function ssnt_additional_settings_page() {
             return hasDuplicates;
         }
     </script>
-    <?php
+<?php
 }
 
 // Register additional settings
-function ssnt_register_additional_settings() {
+function ssnt_register_additional_settings()
+{
     register_setting('ssnt_additional_settings_group', 'ssnt_dynamic_fields', 'ssnt_sanitize_ssnt_dynamic_fields');
 
     add_settings_section(
@@ -145,7 +147,8 @@ function ssnt_register_additional_settings() {
 
 add_action('admin_init', 'ssnt_register_additional_settings');
 
-function ssnt_sanitize_ssnt_dynamic_fields($fields) {
+function ssnt_sanitize_ssnt_dynamic_fields($fields)
+{
     $sanitized_fields = array();
     foreach ($fields as $field) {
         $sanitized_fields[] = array(
@@ -158,34 +161,38 @@ function ssnt_sanitize_ssnt_dynamic_fields($fields) {
     }
     return $sanitized_fields;
 }
-add_action( 'admin_init', 'ssnt_register_additional_settings' );
+add_action('admin_init', 'ssnt_register_additional_settings');
 
-function ssnt_additional_settings_section_callback() {
+function ssnt_additional_settings_section_callback()
+{
     echo 'Configure your additional settings below:';
 }
 
-function ssnt_field_label_callback() {
-    $label = get_option( 'ssnt_field_label' );
-    ?>
-    <input type="text" name="ssnt_field_label" value="<?php echo isset( $label ) ? esc_attr( $label ) : ''; ?>">
-    <?php
+function ssnt_field_label_callback()
+{
+    $label = get_option('ssnt_field_label');
+?>
+    <input type="text" name="ssnt_field_label" value="<?php echo isset($label) ? esc_attr($label) : ''; ?>">
+<?php
 }
 
-function ssnt_field_name_callback() {
-    $name = get_option( 'ssnt_field_name' );
-    ?>
-    <input type="text" name="ssnt_field_name" value="<?php echo isset( $name ) ? esc_attr( $name ) : ''; ?>">
-    <?php
+function ssnt_field_name_callback()
+{
+    $name = get_option('ssnt_field_name');
+?>
+    <input type="text" name="ssnt_field_name" value="<?php echo isset($name) ? esc_attr($name) : ''; ?>">
+<?php
 }
 
-function ssnt_field_type_callback() {
-    $type = get_option( 'ssnt_field_type' );
-    ?>
+function ssnt_field_type_callback()
+{
+    $type = get_option('ssnt_field_type');
+?>
     <select name="ssnt_field_type">
-        <option value="heading" <?php selected( $type, 'heading' ); ?>>Heading</option>
-        <option value="plain_text" <?php selected( $type, 'plain_text' ); ?>>Plain Text</option>
-        <option value="phone" <?php selected( $type, 'phone' ); ?>>Phone</option>
-        <option value="email" <?php selected( $type, 'email' ); ?>>E-mail</option>
+        <option value="heading" <?php selected($type, 'heading'); ?>>Heading</option>
+        <option value="plain_text" <?php selected($type, 'plain_text'); ?>>Plain Text</option>
+        <option value="phone" <?php selected($type, 'phone'); ?>>Phone</option>
+        <option value="email" <?php selected($type, 'email'); ?>>E-mail</option>
     </select>
-    <?php
+<?php
 }
