@@ -1,0 +1,52 @@
+.dynamic-field {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000000;
+    margin-block: 1rem;
+    padding: .8rem;
+    border-radius: 1rem;
+    justify-content: space-between;
+    transition:.3s box-shadow ease-in-out;
+}
+
+.dynamic-field:hover {
+    box-shadow: 2px 2px 10px #0000003d;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.right {
+    
+}
+
+#add-field-button{
+    padding: .8rem;
+    margin-left: 100%;
+    transform: translateX(-100%);
+    width: max-content;
+    border-radius: 1rem;
+    border: 0;
+    background: #2d734c;
+    font-size: medium;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition:.3s all ease-in-out;
+}
+#add-field-button:hover{
+    background: #3d8e61;
+}
+
+.delete-field-button{
+    font-size: large;
+    border: 0;
+    cursor: pointer;
+}
+
+.drag-handle {
+    cursor: move;
+}
