@@ -20,7 +20,7 @@ A Wordpress plugin to create custom settings page and manage those settings.
 
 1. Add new options page for you wordpress site.
 2. You can add new options fields.
-3. You can retrieve options with dynamic way on theme editors.
+3. You can retrieve options with dynamic way on theme editors (Temporarily only on bricks builder).
 
 ## Features
 
