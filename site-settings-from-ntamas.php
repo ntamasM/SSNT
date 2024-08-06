@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Site Settings from Ntamas
-Plugin URI: https://ntamadakis.gr
+Plugin URI: https://github.com/ntamasM/SSNT/blob/main/site-settings-from-ntamas.php
 Description: A plugin to create custom settings page and manage those settings.
 Version: 1.0
 Author: Ntamas
